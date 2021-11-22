@@ -7,27 +7,42 @@
     <ContentPage.BindingContext>
         <local:AllStudentViewModel/>
     </ContentPage.BindingContext>
-    
-    <ListView x:Name="MyListView"
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddStudent" Text="ADD" Clicked="AddStudent_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="MyListView" Grid.Row="0"
             ItemsSource="{Binding Students}"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout>
-                        <Label Text="Student:" />
-                        <Label>
-                            <Label.Text>
-                                <MultiBinding StringFormat="{}{0} {1}">
-                                    <Binding Path="Firstname"/>
-                                    <Binding Path="Lastname" />
-                                </MultiBinding>
-                            </Label.Text>
-                        </Label>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="Student:" />
+                            <Label>
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="Firstname"/>
+                                        <Binding Path="Lastname" />
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button x:Name="PrevStudents" Text="Prev" Clicked="PrevStudents_Clicked"/>
+            <Button x:Name="NextStudents" Text="Next" Clicked="NextStudents_Clicked"/>
+        </StackLayout>
+    </Grid>
+
 </ContentPage>
