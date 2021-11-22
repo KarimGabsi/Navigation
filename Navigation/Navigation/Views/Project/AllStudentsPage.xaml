@@ -11,6 +11,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="AddStudent" Text="ADD" Clicked="AddStudent_Clicked"/>
     </ContentPage.ToolbarItems>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="9*"/>
@@ -39,6 +40,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
         <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
             <Button x:Name="PrevStudents" Text="Prev" Clicked="PrevStudents_Clicked"/>
             <Button x:Name="NextStudents" Text="Next" Clicked="NextStudents_Clicked"/>
