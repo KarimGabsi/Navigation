@@ -1,4 +1,6 @@
 ﻿using Navigation.API;
+using Navigation.AppService;
+using Navigation.Views.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ namespace Navigation.ViewModels
     public class StudentViewModel : BaseViewModel
     {
         private Student _Student;
+        private PageService pageService = new PageService();
 
         public ICommand GetByIdCommand { get; private set; }
 
@@ -40,10 +43,11 @@ namespace Navigation.ViewModels
                     var response = await service.myService.GetById(id);
                     Student = JsonConvert.DeserializeObject<APISingleResponse<Student>>(response).Value;
                 }
+
             }
             catch (Exception ex)
             {
-                throw ex;
+                await pageService.PushAync(new ErrorPage(ex));
             }
         }
     }

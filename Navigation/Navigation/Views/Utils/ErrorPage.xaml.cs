@@ -14,8 +14,8 @@ namespace Navigation.Views.Utils
     {
         public ErrorPage(Exception ex)
         {
-            BindingContext = ex;
             InitializeComponent();
+            BindingContext = ex;
         }
     }
 }
